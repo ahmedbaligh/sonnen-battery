@@ -4,16 +4,7 @@ export const addChargeDirection = (chargeStates: BaseChargeState[]): ChargeState
   chargeStates.map((state, i, states) => {
     const prevState = states[i - 1];
 
-    if (prevState === undefined) {
-      return { ...state, direction: 'up' };
-    }
-
-    const direction =
-      state.chargingLevel === prevState.chargingLevel
-        ? 'same'
-        : state.chargingLevel - prevState.chargingLevel > 0
-        ? 'up'
-        : 'down';
+    const direction = getChargingDirection(state.chargingLevel, prevState?.chargingLevel);
 
     return {
       ...state,
@@ -40,4 +31,12 @@ export const getChargeStatus = (level: number) => {
   if (level < 65) return 'medium';
 
   return 'high';
+};
+
+export const getChargingDirection = (level: number, prevLevel?: number) => {
+  if (prevLevel === undefined) return 'up';
+
+  if (level === prevLevel) return 'same';
+
+  return level > prevLevel ? 'up' : 'down';
 };
