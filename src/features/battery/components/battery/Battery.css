@@ -1,0 +1,135 @@
+.battery {
+  --charge-color: currentColor;
+  position: relative;
+  display: flex;
+  gap: 0.125rem;
+  aspect-ratio: 2 / 1;
+  color: var(--colors-gray-400);
+  border: 5px solid currentColor;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  width: 100%;
+  max-width: 72rem;
+}
+
+.battery.low {
+  --charge-color: var(--colors-red-500);
+}
+
+.battery.medium {
+  --charge-color: var(--colors-orange-500);
+}
+
+.battery.high {
+  --charge-color: var(--colors-blue-400);
+}
+
+.battery.full {
+  --charge-color: var(--colors-green-400);
+}
+
+.battery::after {
+  --size: 4%;
+  content: '';
+  position: absolute;
+  align-self: center;
+  background-color: currentColor;
+  width: var(--size);
+  aspect-ratio: 1 / 2;
+  inset-inline-end: calc(-1 * var(--size));
+  border-start-end-radius: 0.25rem;
+  border-end-end-radius: 0.25rem;
+}
+
+.charge {
+  flex: 1;
+  background-color: var(--charge-color);
+  border-radius: 100vw;
+  opacity: 0.1;
+  transition: opacity 0.5s, flex-grow 0.5s;
+}
+
+.charge.has-data {
+  flex-grow: 2;
+  position: relative;
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.charge.current {
+  opacity: 0.8;
+}
+
+.charge.current ~ .charge:not(.has-data) {
+  opacity: 0;
+}
+
+.charge.has-data:hover {
+  opacity: 1;
+}
+
+.charge-states {
+  position: absolute;
+  top: calc(100% + 1.5rem);
+  inset-inline-start: 50%;
+  transform: translateX(-50%) translateY(-2rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: max-content;
+  font-size: 0.875rem;
+  font-weight: 500;
+  background-color: var(--colors-gray-700);
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.375rem;
+  color: var(--colors-gray-200);
+  opacity: 0;
+  pointer-events: none;
+  transition-property: opacity, transform;
+  transition-duration: 0.5s;
+}
+
+.charge-states::before {
+  --arrow-size: 0.375rem;
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  inset-inline-start: 50%;
+  margin-inline-start: calc(-1 * var(--arrow-size));
+  border-width: var(--arrow-size);
+  border-style: solid;
+  border-color: transparent transparent var(--colors-gray-700) transparent;
+}
+
+.charge.has-data:hover .charge-states {
+  opacity: 1;
+  pointer-events: initial;
+  transform: translateX(-50%) translateY(0);
+  transition-duration: 0.2s;
+  transition-delay: 0.3s;
+}
+
+.charge-states header {
+  font-size: 1rem;
+}
+
+.charge-info {
+  padding-inline-start: 1.25rem;
+}
+
+.charge-direction {
+  margin-inline-start: 0.75rem;
+  font-size: 1.75em;
+}
+
+.charge-direction.up {
+  color: var(--colors-green-400);
+}
+
+.charge-direction.down {
+  color: var(--colors-red-500);
+}
+
+.charge-direction.same {
+  color: var(--colors-gray-400);
+}
