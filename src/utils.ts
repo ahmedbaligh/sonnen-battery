@@ -35,3 +35,8 @@ export const toTitleCase = (text: string) =>
     .split(' ')
     .map(word => word[0].toUpperCase() + word.slice(1).toLowerCase())
     .join(' ');
+
+export const sleep = (ms = 0) =>
+  new Promise(resolve => {
+    setTimeout(resolve, ms);
+  });

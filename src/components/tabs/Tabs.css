@@ -1,0 +1,22 @@
+.tabs {
+  display: flex;
+  align-items: center;
+  border-radius: 6rem;
+  border: 2px solid gray;
+  padding: 0.25rem;
+}
+
+.tab {
+  text-transform: capitalize;
+  padding: 0.5rem 1rem;
+  border-radius: 6rem;
+  font-weight: 600;
+  transition-property: color, background-color;
+  transition-duration: 0.3s;
+}
+
+.tab.active {
+  color: black;
+  background-color: rgb(219, 217, 217);
+  transition-delay: 0.2s;
+}
