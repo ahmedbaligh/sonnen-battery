@@ -2,8 +2,9 @@
   display: flex;
   align-items: center;
   border-radius: 6rem;
-  border: 2px solid gray;
+  border: 2px solid var(--colors-gray-400);
   padding: 0.25rem;
+  font-size: 1rem;
 }
 
 .tab {
@@ -11,12 +12,19 @@
   padding: 0.5rem 1rem;
   border-radius: 6rem;
   font-weight: 600;
+  color: var(--colors-gray-200);
   transition-property: color, background-color;
   transition-duration: 0.3s;
 }
 
 .tab.active {
-  color: black;
-  background-color: rgb(219, 217, 217);
+  color: var(--colors-gray-900);
+  background-color: var(--colors-gray-200);
   transition-delay: 0.2s;
+}
+
+@media (max-width: 768px) {
+  .tabs {
+    font-size: 0.875rem;
+  }
 }

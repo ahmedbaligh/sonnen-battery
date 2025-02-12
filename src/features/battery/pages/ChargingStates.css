@@ -22,4 +22,27 @@ h1 {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  main {
+    padding-inline: 2rem;
+    gap: 2rem;
+  }
+
+  .page-header {
+    flex-direction: column;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  main {
+    padding-inline: 1rem;
+    gap: 4rem;
+  }
 }
