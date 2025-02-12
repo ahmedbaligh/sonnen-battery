@@ -38,9 +38,9 @@ export function ChargingStates() {
 
       <article className="page-body">
         {chargingStatesQuery.isPending ? (
-          'Loading...'
+          <Battery.Shimmer />
         ) : chargingStatesQuery.isError ? (
-          'Error'
+          <p className="error">An error occurred while fetching the battery charging states. Please try again later.</p>
         ) : activeView === 'battery' ? (
           <Battery chargeState={chargingStatesQuery.data} />
         ) : (

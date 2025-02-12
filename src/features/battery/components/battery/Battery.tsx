@@ -57,3 +57,11 @@ export function Battery({ chargeState }: BatteryProps) {
     </div>
   );
 }
+
+Battery.Shimmer = () => (
+  <div className="battery">
+    {Array.from({ length: 100 }).map((_, i) => (
+      <div key={i} className="charge shimmer" />
+    ))}
+  </div>
+);

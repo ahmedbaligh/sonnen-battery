@@ -25,6 +25,11 @@ h1 {
   align-items: center;
 }
 
+.page-body .error {
+  text-align: center;
+  color: var(--colors-gray-400);
+}
+
 @media (max-width: 768px) {
   main {
     padding-inline: 2rem;

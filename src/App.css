@@ -4,3 +4,13 @@
   flex-direction: column;
   max-width: 100%;
 }
+
+.shimmer {
+  animation: shimmer 0.5s infinite linear alternate;
+}
+
+@keyframes shimmer {
+  to {
+    background-color: var(--colors-gray-200);
+  }
+}
